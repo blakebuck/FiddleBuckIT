@@ -1,0 +1,117 @@
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+}
+.centered {
+    height: 10em;
+    position: relative
+}
+.centered>div {
+    display: inline;
+    left: 50%;
+    margin: 0;
+    margin-right: -50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.editor {
+    height: 100%;
+    width: 100%;
+}
+.extList {
+    list-style: none;
+    padding: 0;
+}
+.extList li {
+    padding: 5px 0;
+}
+html {
+    height: 100%;
+    overflow-y: hidden;
+}
+.longInput {
+    width: 500px;
+}
+#outputLink:link,
+#outputLink:visited,
+#outputLink:hover,
+#outputLink:active {
+    color: #ffffff;
+    text-decoration: none;
+}
+#tab-bar {
+    background: #333;
+    color: white;
+    display: block;
+    float: left;
+    height: 100%;
+    min-width: 5%;
+    padding-top: 10px;
+    width: 40px;
+}
+#tab-bar img {
+    display: block;
+    cursor: pointer;
+    margin: 10px auto;
+    width: 50px;
+}
+.view {
+    height: 100%;
+    left: 0;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.view[data-value='loading']{
+    background: #ffffff;
+    z-index: 999999;
+}
+.view[data-value='console'],
+.view[data-value='settings'],
+.view[data-value='github'],
+.view[data-value='share'] {
+    background: #ccc;
+}
+.view[data-value='console']>div {
+    clear: both;
+    height: 26px;
+    padding: 3px;
+    position: relative;
+}
+.view[data-value='console']>div img {
+    float: left;
+    margin: 5px;
+}
+.view[data-value='console']>div span {
+    float: left;
+    margin: 5px 0;
+}
+.view[data-value='console']>div span.consoleWarn {
+    color: #732b00;
+}
+.view[data-value='console']>div span.consoleError {
+    color: red;
+}
+.view[data-value='console']>div:nth-child(even){
+    background: rgb(191, 191, 191);
+    font-size: 16px;
+}
+.view[data-value='settings']>div, .view[data-value='github']>div, .view[data-value='share']>div {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px 20px;
+}
+.viewBtn[data-value='github'] {
+    display: none;
+}
+#views {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 94%;
+}

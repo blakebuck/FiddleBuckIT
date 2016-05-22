@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FiddleBuckIT</title>
+        <link rel="stylesheet" href="css/webfiddle.css" />
+    </head>
+    <body>
+        <!-- Link Bar -->
+        <div id="tab-bar">
+            <div class="viewBtn" data-value="html" onclick="viewBtnClick('html');">
+                <img src="images/html-active.png" title="HTML Editor">
+            </div>
+            <div class="viewBtn" data-value="js" onclick="viewBtnClick('js');">
+                <img src="images/js.png" title="JavaScript Editor">
+            </div>
+            <div class="viewBtn" data-value="css" onclick="viewBtnClick('css');">
+                <img src="images/css.png" title="CSS Editor">
+            </div>
+            <div class="funcBtn" data-value="preview">
+                <img src="images/play.png" title="Run in New Tab">
+            </div>
+            <div class="viewBtn" data-value="settings" onclick="viewBtnClick('settings');">
+                <img src="images/settings.png" title="Settings">
+            </div>
+            <div class="viewBtn" data-value="console" onclick="viewBtnClick('console');">
+                <img src="images/console.png" title="View Console">
+            </div>
+            <div class="viewBtn" data-value="github" onclick="viewBtnClick('github');">
+                <img src="images/github.png" title="Save as Gist">
+            </div>
+            <div class="viewBtn" data-value="share" onclick="viewBtnClick('share');">
+                <img src="images/share.png" title="Share Fiddle">
+            </div>
+            <div class="viewBtn" data-value="newFiddle" onclick="newFiddle();">
+                <img src="images/new.png" title="New Fiddle">
+            </div>
+            <!--<div>-->
+                <!--<a id="outputLink" download="output.html">-->
+                    <!--<img src="images/save-disabled.png">-->
+                <!--</a>-->
+            <!--</div>-->
+        </div>
+        <!-- Views -->
+        <div id="views">
+            <div class="view" data-value="share">
+                <div>
+                    <strong>URL to Share:</strong> <span id="shareURL"><span style="color: red; font-weight: bold">Cannot Share. Not saved as Gist.</span></span>
+                </div>
+            </div>
+            <div class="view" data-value="console">
+                <div>Console</div>
+            </div>
+            <div class="view" data-value="github">
+                <div>
+                    <h3>GitHub Gists</h3>
+                    <label>Description of Gist</label>
+                    <br><br>
+                    <input class="longInput" id="gistDesc">
+                    <br><br>
+                    <input id="gistSave" type="button" value="Save Gist" onclick="saveGist();">
+                    <div id="gistStatus"></div>
+                </div>
+            </div>
+            <div class="view" data-value="settings">
+                <div>
+                    <p style="color: red; font-weight: bold">Changes are save automatically.</p>
+                    <h3>External CSS</h3>
+                    <p>Add External CSS (Input URL Below). To remove a resource just clear the box.</p>
+                    <ul class="extList cssList">
+                        <li>
+                            <input class="extCSS longInput" value="">
+                        </li>
+                    </ul>
+                    <input type="button" value="Add More" onclick="addExtCSS();">
+                    <h3>External JS</h3>
+                    <p>
+                        Add External JavaScript (Input URL Below). To remove a resource just clear the box.<br>
+                        <span style="color: blue; font-weight: bold;">
+                            Please note: Scripts are loaded one at a time,
+                            so if you have a lot of scripts you may see a delay.
+                        </span>
+                    </p>
+                    <ul class="extList jsList">
+                        <li>
+                            <input class="extJS longInput" value="https://code.jquery.com/jquery-1.12.3.min.js">
+                        </li>
+                        <li>
+                            <input class="extJS longInput" value="">
+                        </li>
+                    </ul>
+                    <input type="button" value="Add More" onclick="addExtJS();">
+                    <h3>Link to Your GitHub</h3>
+                    <p>
+                        Enter your GitHub credentials below to save your work as a GitHub Gist.<br>
+                        <span style="color: red">
+                            Note: WebFiddler has no server side, nothing is sent to or saved on a server.<br>
+                            Username and Password are used to create a token. Credentials are only sent to GitHub,
+                            and only over HTTPS. Once token is acquired username and password are cleared.
+                        </span>
+                    </p>
+                    <label>Username:</label>
+                    <input id="gitHubUsername"><br><br>
+                    <label>Password:</label>&nbsp
+                    <input id="gitHubPassword" type="password"><br><br><br>
+                    <input type="button" value="Connect to GitHub" onclick="authGitHub();"><br>
+                    <span id="gitHubStatus"></span>
+                    <br><br>
+                </div>
+            </div>
+            <div class="view centered" data-value="loading">
+                <div style="text-align: center">
+                    <img src="images/fiddlebuckit.png"><br>
+                    Loading... Please Wait
+                </div>
+            </div>
+            <div class="view" data-value="js">
+                <div id="editor-js" class="editor"></div>
+            </div>
+            <div class="view" data-value="css">
+                <div id="editor-css" class="editor"></div>
+            </div>
+            <div class="view" data-value="html">
+                <div id="editor-html" class="editor"></div>
+            </div>
+        </div>
+        <script src="js/libs/jquery-1.11.2.min.js"></script>
+        <script src="js/libs/ace/src-min/ace.js"></script>
+        <script src="js/libs/bbit-time.js"></script>
+        <script src="js/webfiddle.js"></script>
+    </body>
+</html>
